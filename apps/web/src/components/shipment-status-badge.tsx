@@ -1,4 +1,4 @@
-import type { ShipmentStatus } from '@aurelia/contracts';
+import type { ShipmentStatus } from '@veyora/contracts';
 
 const tones: Record<ShipmentStatus, string> = {
   DELIVERED: 'bg-emerald-100 text-emerald-800',

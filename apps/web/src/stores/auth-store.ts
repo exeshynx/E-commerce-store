@@ -1,4 +1,4 @@
-import type { AuthSessionData, AuthUser } from '@aurelia/contracts';
+import type { AuthSessionData, AuthUser } from '@veyora/contracts';
 import { create } from 'zustand';
 
 type AuthState = {

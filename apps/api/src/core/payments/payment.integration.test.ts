@@ -7,7 +7,7 @@ import type {
   AuthSessionData,
   OrderPaymentHistoryData,
   PaymentAttemptData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { Prisma } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
@@ -16,9 +16,9 @@ import { passwordService } from '../auth/password.service.js';
 import { webhookEventService } from './webhook-event.service.js';
 
 const password = 'StrongPassword123';
-const adminEmail = 'payment.admin@aurelia.test';
-const customerEmail = 'payment.customer@aurelia.test';
-const otherCustomerEmail = 'payment.other-customer@aurelia.test';
+const adminEmail = 'payment.admin@veyora.test';
+const customerEmail = 'payment.customer@veyora.test';
+const otherCustomerEmail = 'payment.other-customer@veyora.test';
 const testEmails = [adminEmail, customerEmail, otherCustomerEmail];
 const webhookExternalEventId = 'payment-foundation-event-001';
 const server = createServer(createApp());

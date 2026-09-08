@@ -10,7 +10,7 @@ import type {
   OrderPaymentHistoryData,
   PaymentAttemptData,
   PaymentRefundData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { Prisma } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
@@ -22,9 +22,9 @@ import { createSafepayPaymentProvider } from './safepay-payment.provider.js';
 
 const password = 'StrongPassword123';
 const webhookSecret = 'phase-7-webhook-secret-that-is-long-enough';
-const adminEmail = 'gateway.admin@aurelia.test';
-const customerEmail = 'gateway.customer@aurelia.test';
-const otherCustomerEmail = 'gateway.other@aurelia.test';
+const adminEmail = 'gateway.admin@veyora.test';
+const customerEmail = 'gateway.customer@veyora.test';
+const otherCustomerEmail = 'gateway.other@veyora.test';
 const testEmails = [adminEmail, customerEmail, otherCustomerEmail];
 const eventIds = [
   'evt_gateway-payment-failed',
@@ -118,7 +118,7 @@ const createOrder = (
           address: 'House 7, Test Street',
           city: 'Lahore',
           country: 'Pakistan',
-          email: `${suffix.toLowerCase()}@aurelia.test`,
+          email: `${suffix.toLowerCase()}@veyora.test`,
           fullName: 'Gateway Customer',
           phone: '+92 300 1234567',
           postalCode: '54000',

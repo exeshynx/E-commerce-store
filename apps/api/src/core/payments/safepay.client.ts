@@ -64,7 +64,7 @@ export const createSafepayGatewayClient = (input: {
         intent: 'CYBERSOURCE',
         merchant_api_key: publicKey,
         metadata: {
-          aurelia_idempotency_key: idempotencyKey,
+          veyora_idempotency_key: idempotencyKey,
           order_id: orderId,
           payment_attempt_id: paymentAttemptId,
         },

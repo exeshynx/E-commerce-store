@@ -1,4 +1,4 @@
-import type { ApiError } from '@aurelia/contracts';
+import type { ApiError } from '@veyora/contracts';
 import axios from 'axios';
 
 const isApiError = (value: unknown): value is ApiError => {

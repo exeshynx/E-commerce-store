@@ -7,7 +7,7 @@ import { AppError } from '../errors/app-error.js';
 import { authenticate } from '../middleware/authenticate.js';
 import { requireTrustedOrigin } from '../middleware/csrf-origin.js';
 
-const refreshCookieName = 'aurelia_refresh';
+const refreshCookieName = 'veyora_refresh';
 const refreshCookiePath = '/api/v1/auth';
 
 const getRefreshToken = (request: Request) => {

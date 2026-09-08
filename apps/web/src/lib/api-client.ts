@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ApiSuccess, AuthSessionData } from '@aurelia/contracts';
+import type { ApiSuccess, AuthSessionData } from '@veyora/contracts';
 import { useAuthStore } from '../stores/auth-store';
 
 const configuredApiUrl: unknown = import.meta.env.VITE_API_URL;
@@ -17,7 +17,7 @@ export const apiClient = axios.create({
   withCredentials: true,
 });
 
-const guestTokenKey = 'aurelia.guest-token';
+const guestTokenKey = 'veyora.guest-token';
 let cachedGuestToken: string | null = null;
 const getGuestToken = () => {
   if (cachedGuestToken) return cachedGuestToken;

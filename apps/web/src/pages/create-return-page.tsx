@@ -1,4 +1,4 @@
-import type { ReturnReason } from '@aurelia/contracts';
+import type { ReturnReason } from '@veyora/contracts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';

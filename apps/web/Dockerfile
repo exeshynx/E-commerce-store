@@ -12,7 +12,7 @@ COPY apps/web apps/web
 COPY packages/contracts packages/contracts
 ARG VITE_API_URL=
 ENV VITE_API_URL=$VITE_API_URL
-RUN npm run build -w @aurelia/contracts && npm run build -w @aurelia/web
+RUN npm run build -w @veyora/contracts && npm run build -w @veyora/web
 
 FROM nginx:1.29-alpine AS runtime
 ENV API_UPSTREAM=http://api:4000

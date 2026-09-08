@@ -1,4 +1,4 @@
-import type { PaymentStatus } from '@aurelia/contracts';
+import type { PaymentStatus } from '@veyora/contracts';
 
 const labels: Record<PaymentStatus, string> = {
   CANCELLED: 'Cancelled',

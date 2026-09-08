@@ -1,4 +1,4 @@
-import type { PaymentProvider, PaymentStatus } from '@aurelia/contracts';
+import type { PaymentProvider, PaymentStatus } from '@veyora/contracts';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';

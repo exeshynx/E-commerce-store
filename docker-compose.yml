@@ -1,14 +1,14 @@
-name: aurelia-jewels
+name: veyora-jewels
 
 services:
   mysql:
     image: mysql:8.4
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-aurelia}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-aurelia_dev_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-veyora}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-veyora_dev_password}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-local_root_password}
-      MYSQL_USER: ${MYSQL_USER:-aurelia}
+      MYSQL_USER: ${MYSQL_USER:-veyora}
     ports:
       - '${MYSQL_BIND_ADDRESS:-127.0.0.1}:3306:3306'
     volumes:
@@ -29,7 +29,7 @@ services:
     env_file: ${APP_ENV_FILE:-.env}
     environment:
       API_HOST: 0.0.0.0
-      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://veyora:veyora_dev_password@mysql:3306/veyora}
       DEPLOYMENT_ENVIRONMENT: docker-compose
       NODE_ENV: production
       WEB_URL: ${PUBLIC_WEB_URL:-http://localhost:8080}
@@ -49,7 +49,7 @@ services:
     command: ['npm', 'run', 'db:migrate:deploy']
     env_file: ${APP_ENV_FILE:-.env}
     environment:
-      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://veyora:veyora_dev_password@mysql:3306/veyora}
       DEPLOYMENT_ENVIRONMENT: docker-compose
       NODE_ENV: production
     depends_on:
@@ -66,7 +66,7 @@ services:
     restart: unless-stopped
     env_file: ${APP_ENV_FILE:-.env}
     environment:
-      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://veyora:veyora_dev_password@mysql:3306/veyora}
       DEPLOYMENT_ENVIRONMENT: docker-compose
       NODE_ENV: production
     depends_on:

@@ -1,4 +1,4 @@
-import type { AddressWriteRequest, CustomerAddress } from '@aurelia/contracts';
+import type { AddressWriteRequest, CustomerAddress } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useId, useState, type FormEvent } from 'react';
 import { Helmet } from 'react-helmet-async';

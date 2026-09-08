@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { CheckoutRequest } from '@aurelia/contracts';
+import type { CheckoutRequest } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRef, useState, type FormEvent } from 'react';
 import { useForm } from 'react-hook-form';

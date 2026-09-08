@@ -1,4 +1,4 @@
-import type { RecommendationType } from '@aurelia/contracts';
+import type { RecommendationType } from '@veyora/contracts';
 import { useQuery } from '@tanstack/react-query';
 import { ProductCard, ProductCardSkeleton } from './product-card';
 import { discoveryApi, discoveryQueryKeys } from '../lib/discovery-api';

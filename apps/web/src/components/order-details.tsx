@@ -1,4 +1,4 @@
-import type { CustomerOrder } from '@aurelia/contracts';
+import type { CustomerOrder } from '@veyora/contracts';
 import { formatDate } from '../lib/format-date';
 import { formatPrice } from '../lib/format-price';
 import { OrderStatusBadge } from './order-status-badge';

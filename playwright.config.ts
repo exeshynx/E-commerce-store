@@ -49,7 +49,7 @@ export default defineConfig({
             url: 'http://127.0.0.1:4100/health/ready',
           },
           {
-            command: 'npm run dev -w @aurelia/web -- --host 127.0.0.1 --port 5273',
+            command: 'npm run dev -w @veyora/web -- --host 127.0.0.1 --port 5273',
             env: { ...process.env, API_URL: 'http://127.0.0.1:4100' },
             reuseExistingServer: !isContinuousIntegration,
             timeout: 120_000,

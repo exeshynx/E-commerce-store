@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build -w @aurelia/contracts && npm run build -w @aurelia/web",
+  "buildCommand": "npm run build -w @veyora/contracts && npm run build -w @veyora/web",
   "framework": "vite",
   "installCommand": "npm install",
   "outputDirectory": "apps/web/dist",

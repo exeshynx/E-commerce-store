@@ -9,7 +9,7 @@ export const healthRouter = Router();
 const healthPayload = (status: 'ok' | 'ready' | 'not_ready') => ({
   deploymentEnvironment: env.DEPLOYMENT_ENVIRONMENT,
   releaseSha: env.RELEASE_SHA,
-  service: 'aurelia-api' as const,
+  service: 'veyora-api' as const,
   status,
   timestamp: new Date().toISOString(),
   uptimeSeconds: Math.max(0, Math.round(process.uptime() - startedAt)),

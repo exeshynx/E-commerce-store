@@ -1,4 +1,4 @@
-import type { PaymentAttempt } from '@aurelia/contracts';
+import type { PaymentAttempt } from '@veyora/contracts';
 import { formatDate } from '../lib/format-date';
 import { formatPrice } from '../lib/format-price';
 import { PaymentStatusBadge } from './payment-status-badge';

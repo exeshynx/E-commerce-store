@@ -15,7 +15,7 @@ The admin area manages products, categories, inventory, users, orders, payments,
 - `vercel.json` — Vercel configuration for the static storefront
 - `render.yaml` and `deploy/` — persistent API/worker deployment examples
 
-The local database is named `aurelia`. That legacy technical identifier is intentionally retained so existing installations and migrations remain compatible; all customer-facing store branding is Veyora.
+Veyora uses its own MySQL database named `veyora`; it does not read from or write to any other project's database.
 
 ## A — Requirements
 
@@ -90,7 +90,7 @@ Safepay and SMTP remain disabled until valid credentials are supplied. Payment c
 2. Confirm the MySQL server uses the host and port configured in `DATABASE_URL`. The included Laragon default is:
 
    ```text
-   mysql://root:@localhost:3306/aurelia
+   mysql://root:@localhost:3306/veyora
    ```
 
    If the local root account has a password, URL-encode it and place it after `root:`.
@@ -98,7 +98,7 @@ Safepay and SMTP remain disabled until valid credentials are supplied. Payment c
 3. Create the database if it does not already exist. In Laragon Terminal or any MySQL client:
 
    ```powershell
-   mysql -u root -e "CREATE DATABASE IF NOT EXISTS aurelia CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+   mysql -u root -e "CREATE DATABASE IF NOT EXISTS veyora CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
    ```
 
    If the account requires a password, use `mysql -u root -p` and enter it when prompted.
@@ -133,7 +133,7 @@ Safepay and SMTP remain disabled until valid credentials are supplied. Payment c
    npm run db:status
    ```
 
-8. Open `http://localhost/phpmyadmin/` from Laragon and confirm the `aurelia` database and its tables are visible. You can also inspect them with:
+8. Open `http://localhost/phpmyadmin/` from Laragon and confirm the `veyora` database and its tables are visible. You can also inspect them with:
 
    ```powershell
    npm run db:studio
@@ -229,7 +229,7 @@ npm run start:worker
 For a local preview of the built storefront:
 
 ```powershell
-npm run preview -w @aurelia/web
+npm run preview -w @veyora/web
 ```
 
 ### Deployment
@@ -247,7 +247,7 @@ Use `deploy/.env.production.example` as the production secret checklist. Configu
 ## G — Complete local startup order
 
 1. Open Laragon and start MySQL.
-2. Ensure the `aurelia` database exists.
+2. Ensure the `veyora` database exists.
 3. Copy/configure `.env` and run `npm run env:check`.
 4. Run `npm install` on the first checkout.
 5. Run `npm run prisma:generate` and `npm run db:migrate:deploy`.

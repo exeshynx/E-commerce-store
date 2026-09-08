@@ -7,7 +7,7 @@ import type {
   AuthSessionData,
   ShipmentData,
   ShipmentTrackingData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import {
   OrderStatus,
   PaymentProvider,
@@ -31,9 +31,9 @@ import { replacePaymentProvider } from '../payments/payment-provider.registry.js
 import { paymentWebhookService } from '../payments/payment-webhook.service.js';
 
 const password = 'StrongPassword123';
-const adminEmail = 'operations.admin@aurelia.test';
-const customerEmail = 'operations.customer@aurelia.test';
-const otherEmail = 'operations.other@aurelia.test';
+const adminEmail = 'operations.admin@veyora.test';
+const customerEmail = 'operations.customer@veyora.test';
+const otherEmail = 'operations.other@veyora.test';
 const testEmails = [adminEmail, customerEmail, otherEmail];
 const webhookEventId = 'evt_operations_retry_success';
 const server = createServer(createApp());
@@ -425,7 +425,7 @@ void test('cleanup, health, metrics, request IDs, and error IDs are operational'
     ...(operationalHeaders ? { headers: operationalHeaders } : {}),
   });
   assert.equal(metrics.status, 200);
-  assert.match(await metrics.text(), /aurelia_http_requests_total/);
+  assert.match(await metrics.text(), /veyora_http_requests_total/);
 
   const missing = await fetch(`${baseUrl}/definitely-not-a-route`);
   assert.equal(missing.status, 404);

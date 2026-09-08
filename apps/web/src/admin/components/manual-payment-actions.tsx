@@ -1,4 +1,4 @@
-import type { PaymentAttempt } from '@aurelia/contracts';
+import type { PaymentAttempt } from '@veyora/contracts';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { toast } from 'sonner';

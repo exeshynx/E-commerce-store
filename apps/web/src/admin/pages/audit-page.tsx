@@ -1,4 +1,4 @@
-import type { AdminAuditAction, AdminAuditEntityType } from '@aurelia/contracts';
+import type { AdminAuditAction, AdminAuditEntityType } from '@veyora/contracts';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { adminApi, adminQueryKeys, type AdminAuditListParameters } from '../../lib/admin-api';

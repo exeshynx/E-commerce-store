@@ -23,8 +23,8 @@ const sign = (
     {
       algorithm: 'HS256',
       expiresIn,
-      issuer: 'aurelia-api',
-      audience: 'aurelia-web',
+      issuer: 'veyora-api',
+      audience: 'veyora-web',
       subject: claims.subject,
     },
   );
@@ -42,8 +42,8 @@ const getExpiration = (token: string) => {
 const verify = (token: string, secret: string, expectedType: 'access' | 'refresh') => {
   const payload = jwt.verify(token, secret, {
     algorithms: ['HS256'],
-    audience: 'aurelia-web',
-    issuer: 'aurelia-api',
+    audience: 'veyora-web',
+    issuer: 'veyora-api',
   }) as JwtPayload & { role?: unknown; sessionId?: unknown; tokenType?: unknown };
 
   if (

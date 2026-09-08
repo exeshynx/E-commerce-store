@@ -17,17 +17,17 @@ import type {
   ProductReviewListData,
   RecommendationData,
   SearchData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { OrderStatus } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
 import { passwordService } from '../auth/password.service.js';
 
 const password = 'StrongPassword123';
-const adminEmail = 'experience.admin@aurelia.test';
-const buyerEmail = 'experience.buyer@aurelia.test';
-const secondBuyerEmail = 'experience.second@aurelia.test';
-const otherEmail = 'experience.other@aurelia.test';
+const adminEmail = 'experience.admin@veyora.test';
+const buyerEmail = 'experience.buyer@veyora.test';
+const secondBuyerEmail = 'experience.second@veyora.test';
+const otherEmail = 'experience.other@veyora.test';
 const emails = [adminEmail, buyerEmail, secondBuyerEmail, otherEmail];
 const skuPrefix = 'EXPERIENCE-';
 const couponPrefix = 'EXPERIENCE';

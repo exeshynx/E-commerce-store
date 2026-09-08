@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: aurelia-api
+    name: veyora-api
     runtime: docker
     dockerfilePath: ./apps/api/Dockerfile
     dockerContext: .
@@ -8,7 +8,7 @@ services:
     preDeployCommand: npm run db:migrate:deploy
     maxShutdownDelaySeconds: 30
     disk:
-      name: aurelia-uploads
+      name: veyora-uploads
       mountPath: /app/apps/api/uploads
       sizeGB: 1
     envVars:
@@ -34,7 +34,7 @@ services:
         value: 'false'
 
   - type: worker
-    name: aurelia-worker
+    name: veyora-worker
     runtime: docker
     dockerfilePath: ./apps/api/Dockerfile
     dockerContext: .
@@ -61,7 +61,7 @@ services:
         value: 'false'
 
   - type: web
-    name: aurelia-web
+    name: veyora-web
     runtime: docker
     dockerfilePath: ./apps/web/Dockerfile
     dockerContext: .

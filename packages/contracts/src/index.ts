@@ -14,7 +14,7 @@ export type ApiError = {
 };
 
 export type HealthStatus = {
-  service: 'aurelia-api';
+  service: 'veyora-api';
   status: 'ok' | 'ready' | 'not_ready';
   timestamp: string;
   uptimeSeconds: number;
@@ -824,7 +824,7 @@ export type AdminUserListData = {
 };
 
 export type AdminSystemOverviewData = {
-  service: 'aurelia-api';
+  service: 'veyora-api';
   apiVersion: string;
   environment: string;
   nodeVersion: string;

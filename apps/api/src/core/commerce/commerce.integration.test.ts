@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { after, before, test } from 'node:test';
-import type { ApiSuccess, AuthSessionData, CartData, WishlistData } from '@aurelia/contracts';
+import type { ApiSuccess, AuthSessionData, CartData, WishlistData } from '@veyora/contracts';
 import { Prisma } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
 import { passwordService } from '../auth/password.service.js';
 
-const email = 'commerce.integration@aurelia.test';
+const email = 'commerce.integration@veyora.test';
 const password = 'StrongPassword123';
 const categorySlug = 'commerce-integration-category';
 const primarySku = 'COMMERCE-TEST-PKR';

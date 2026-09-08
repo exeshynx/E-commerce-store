@@ -1,4 +1,4 @@
-import type { OrderStatus } from '@aurelia/contracts';
+import type { OrderStatus } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';

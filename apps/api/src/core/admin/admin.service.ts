@@ -690,7 +690,7 @@ export const adminService = {
       database: 'ready' as const,
       environment: env.NODE_ENV,
       nodeVersion: process.version,
-      service: 'aurelia-api' as const,
+      service: 'veyora-api' as const,
       timestamp: new Date().toISOString(),
       uptimeSeconds: Math.floor(process.uptime()),
     };

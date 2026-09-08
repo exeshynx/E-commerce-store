@@ -11,9 +11,9 @@ COPY tsconfig.base.json ./
 COPY .env.example ./
 COPY apps/api apps/api
 COPY packages/contracts packages/contracts
-RUN DATABASE_URL=mysql://build:build@127.0.0.1:3306/aurelia npm run prisma:generate \
-    && npm run build -w @aurelia/contracts \
-    && npm run build -w @aurelia/api \
+RUN DATABASE_URL=mysql://build:build@127.0.0.1:3306/veyora npm run prisma:generate \
+    && npm run build -w @veyora/contracts \
+    && npm run build -w @veyora/api \
     && npm prune --omit=dev
 
 FROM node:24-bookworm-slim AS runtime

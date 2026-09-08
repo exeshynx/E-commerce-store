@@ -10,15 +10,15 @@ import type {
   ProductDetailData,
   ProductImage,
   ProductListData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { createApp } from '../../app.js';
 import { productImageStorage } from '../../infrastructure/storage/product-image.storage.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
 import { cleanupOperationalRecords } from '../../test/test-data-cleanup.js';
 import { passwordService } from '../auth/password.service.js';
 
-const adminEmail = 'catalog.admin@aurelia.test';
-const customerEmail = 'catalog.customer@aurelia.test';
+const adminEmail = 'catalog.admin@veyora.test';
+const customerEmail = 'catalog.customer@veyora.test';
 const password = 'StrongPassword123';
 const categorySlug = 'catalog-integration-category';
 const productSlug = 'catalog-integration-product';

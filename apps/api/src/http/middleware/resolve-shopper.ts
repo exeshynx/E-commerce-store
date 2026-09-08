@@ -31,7 +31,7 @@ const resolveGuestUserId = async (token: string) => {
   try {
     const user = await prisma.user.create({
       data: {
-        email: `guest+${token.replaceAll('-', '')}@aurelia.local`,
+        email: `guest+${token.replaceAll('-', '')}@veyora.local`,
         firstName: 'Guest',
         guestSession: {
           create: { expiresAt: new Date(Date.now() + guestLifetimeMs), tokenHash: hash },

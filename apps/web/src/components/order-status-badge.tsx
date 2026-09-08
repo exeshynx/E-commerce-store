@@ -1,4 +1,4 @@
-import type { OrderStatus } from '@aurelia/contracts';
+import type { OrderStatus } from '@veyora/contracts';
 
 const labels: Record<OrderStatus, string> = {
   AWAITING_PAYMENT: 'Awaiting payment',

@@ -3,7 +3,7 @@ import type {
   CategoryListData,
   ProductDetailData,
   ProductListData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { apiClient } from './api-client';
 
 export type ProductListParameters = {

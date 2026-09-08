@@ -1,4 +1,4 @@
-import type { SupportTicketPriority, SupportTicketStatus } from '@aurelia/contracts';
+import type { SupportTicketPriority, SupportTicketStatus } from '@veyora/contracts';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';

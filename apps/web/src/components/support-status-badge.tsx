@@ -1,4 +1,4 @@
-import type { SupportTicketStatus } from '@aurelia/contracts';
+import type { SupportTicketStatus } from '@veyora/contracts';
 
 export const SupportStatusBadge = ({ status }: { status: SupportTicketStatus }) => {
   const tone =

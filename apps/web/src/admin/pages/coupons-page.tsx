@@ -1,4 +1,4 @@
-import type { Coupon, CouponType, CouponWriteRequest } from '@aurelia/contracts';
+import type { Coupon, CouponType, CouponWriteRequest } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, type FormEvent } from 'react';
 import { Helmet } from 'react-helmet-async';

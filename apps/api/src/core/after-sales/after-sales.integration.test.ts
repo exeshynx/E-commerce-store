@@ -9,7 +9,7 @@ import type {
   ReturnListData,
   SupportTicketDetailData,
   SupportTicketListData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import {
   AdminAuditEntityType,
   EmailNotificationType,
@@ -26,9 +26,9 @@ import { cleanupAfterSalesRecords } from '../../test/test-data-cleanup.js';
 import { passwordService } from '../auth/password.service.js';
 
 const password = 'StrongPassword123';
-const adminEmail = 'after-sales.admin@aurelia.test';
-const customerEmail = 'after-sales.customer@aurelia.test';
-const otherEmail = 'after-sales.other@aurelia.test';
+const adminEmail = 'after-sales.admin@veyora.test';
+const customerEmail = 'after-sales.customer@veyora.test';
+const otherEmail = 'after-sales.other@veyora.test';
 const emails = [adminEmail, customerEmail, otherEmail];
 const server = createServer(createApp());
 const tokens = new Map<string, string>();

@@ -20,7 +20,7 @@ jobs:
     env:
       BCRYPT_ROUNDS: 10
       COOKIE_SECRET: ci-cookie-secret-at-least-32-characters-long
-      DATABASE_URL: mysql://root:root@127.0.0.1:3306/aurelia
+      DATABASE_URL: mysql://root:root@127.0.0.1:3306/veyora
       DEPLOYMENT_ENVIRONMENT: continuous-integration
       JWT_ACCESS_SECRET: ci-access-secret-at-least-32-characters-long
       JWT_REFRESH_SECRET: ci-refresh-secret-at-least-32-characters-long
@@ -33,7 +33,7 @@ jobs:
       mysql:
         image: mysql:8.4
         env:
-          MYSQL_DATABASE: aurelia
+          MYSQL_DATABASE: veyora
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 3306:3306

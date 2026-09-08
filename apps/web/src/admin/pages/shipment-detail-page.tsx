@@ -1,4 +1,4 @@
-import type { AdminShipmentUpdateRequest, ShipmentStatus } from '@aurelia/contracts';
+import type { AdminShipmentUpdateRequest, ShipmentStatus } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, type FormEvent } from 'react';
 import { Helmet } from 'react-helmet-async';

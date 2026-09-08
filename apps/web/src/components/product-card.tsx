@@ -1,4 +1,4 @@
-import type { CatalogProduct } from '@aurelia/contracts';
+import type { CatalogProduct } from '@veyora/contracts';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { resolveAssetUrl } from '../lib/asset-url';

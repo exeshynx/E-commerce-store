@@ -1,4 +1,4 @@
-import type { AdminCategory, AdminProductWriteRequest, ProductImage } from '@aurelia/contracts';
+import type { AdminCategory, AdminProductWriteRequest, ProductImage } from '@veyora/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, type FormEvent } from 'react';
 import { FiArrowDown, FiArrowUp, FiTrash2, FiUpload } from 'react-icons/fi';

@@ -1,4 +1,4 @@
-import type { ApiSuccess, CouponPreview } from '@aurelia/contracts';
+import type { ApiSuccess, CouponPreview } from '@veyora/contracts';
 import { apiClient } from './api-client';
 
 export const promotionsApi = {

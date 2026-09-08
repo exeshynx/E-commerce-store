@@ -13,18 +13,19 @@ metricsRouter.get('/', async (_request, response) => {
     prisma.backgroundJobState.findMany({ orderBy: { name: 'asc' } }),
   ]);
   const gauges: Record<string, number> = {
-    aurelia_payment_webhooks_failed: failedWebhooks,
+    veyora_payment_webhooks_failed: failedWebhooks,
   };
   for (const group of emailGroups) {
-    gauges[`aurelia_email_queue_items{status="${group.status}"}`] = group._count._all;
+    gauges[`veyora_email_queue_items{status="${group.status}"}`] = group._count._all;
   }
   for (const job of jobs) {
     const name = job.name.replaceAll('\\', '\\\\').replaceAll('"', '\\"');
-    gauges[`aurelia_background_job_processed_total{job="${name}"}`] = job.processedCount;
-    gauges[`aurelia_background_job_last_success_timestamp_seconds{job="${name}"}`] =
+    gauges[`veyora_background_job_processed_total{job="${name}"}`] = job.processedCount;
+    gauges[`veyora_background_job_last_success_timestamp_seconds{job="${name}"}`] =
       job.lastSucceededAt ? job.lastSucceededAt.getTime() / 1_000 : 0;
-    gauges[`aurelia_background_job_last_failure_timestamp_seconds{job="${name}"}`] =
-      job.lastFailedAt ? job.lastFailedAt.getTime() / 1_000 : 0;
+    gauges[`veyora_background_job_last_failure_timestamp_seconds{job="${name}"}`] = job.lastFailedAt
+      ? job.lastFailedAt.getTime() / 1_000
+      : 0;
   }
   response.type('text/plain; version=0.0.4').send(metrics.render(gauges));
 });

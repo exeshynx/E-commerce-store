@@ -4,7 +4,7 @@ import type {
   RecommendationType,
   SearchData,
   SearchSuggestion,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { apiClient } from './api-client';
 
 export type SearchParameters = {

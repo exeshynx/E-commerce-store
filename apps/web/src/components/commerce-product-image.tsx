@@ -1,4 +1,4 @@
-import type { CommerceProduct } from '@aurelia/contracts';
+import type { CommerceProduct } from '@veyora/contracts';
 import { resolveAssetUrl } from '../lib/asset-url';
 
 export const CommerceProductImage = ({ product }: { product: CommerceProduct }) => {

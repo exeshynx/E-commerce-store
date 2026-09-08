@@ -8,7 +8,7 @@ import type {
   CheckoutData,
   OrderDetailData,
   OrderListData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { Prisma } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
@@ -16,9 +16,9 @@ import { cleanupOperationalRecords } from '../../test/test-data-cleanup.js';
 import { passwordService } from '../auth/password.service.js';
 
 const password = 'StrongPassword123';
-const customerEmail = 'checkout.customer@aurelia.test';
-const competingEmailOne = 'checkout.competing.one@aurelia.test';
-const competingEmailTwo = 'checkout.competing.two@aurelia.test';
+const customerEmail = 'checkout.customer@veyora.test';
+const competingEmailOne = 'checkout.competing.one@veyora.test';
+const competingEmailTwo = 'checkout.competing.two@veyora.test';
 const testEmails = [customerEmail, competingEmailOne, competingEmailTwo];
 const categorySlug = 'checkout-integration-category';
 const primarySku = 'CHECKOUT-TEST-PRIMARY';

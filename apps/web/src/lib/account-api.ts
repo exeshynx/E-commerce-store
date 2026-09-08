@@ -6,7 +6,7 @@ import type {
   AuthUser,
   CustomerAddress,
   ProfileUpdateRequest,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { apiClient } from './api-client';
 
 export const accountQueryKeys = {

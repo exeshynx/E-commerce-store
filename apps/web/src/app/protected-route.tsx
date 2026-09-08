@@ -1,4 +1,4 @@
-import type { UserRole } from '@aurelia/contracts';
+import type { UserRole } from '@veyora/contracts';
 import type { PropsWithChildren } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth-store';

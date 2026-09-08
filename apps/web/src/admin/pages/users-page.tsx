@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { UserRole, UserStatus } from '@aurelia/contracts';
+import type { UserRole, UserStatus } from '@veyora/contracts';
 import { Helmet } from 'react-helmet-async';
 import { getApiErrorMessage } from '../../lib/api-error';
 import { adminApi, adminQueryKeys, type AdminUserListParameters } from '../../lib/admin-api';

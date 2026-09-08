@@ -13,7 +13,7 @@ import type {
   AdminUserListData,
   ApiSuccess,
   AuthSessionData,
-} from '@aurelia/contracts';
+} from '@veyora/contracts';
 import { Prisma } from '@prisma/client';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
@@ -21,8 +21,8 @@ import { cleanupOperationalRecords } from '../../test/test-data-cleanup.js';
 import { passwordService } from '../auth/password.service.js';
 
 const password = 'StrongPassword123';
-const adminEmail = 'management.admin@aurelia.test';
-const customerEmail = 'management.customer@aurelia.test';
+const adminEmail = 'management.admin@veyora.test';
+const customerEmail = 'management.customer@veyora.test';
 const testEmails = [adminEmail, customerEmail];
 const categorySlug = 'management-integration-category';
 const productSku = 'MANAGEMENT-TEST-001';
@@ -336,5 +336,5 @@ void test('admin dashboard, store management, authorization, orders, and audit t
   assert.equal(systemResponse.status, 200);
   const system = ((await systemResponse.json()) as ApiSuccess<AdminSystemOverviewData>).data;
   assert.equal(system.database, 'ready');
-  assert.equal(system.service, 'aurelia-api');
+  assert.equal(system.service, 'veyora-api');
 });

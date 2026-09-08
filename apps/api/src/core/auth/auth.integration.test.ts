@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { after, before, test } from 'node:test';
-import type { ApiSuccess, AuthSessionData } from '@aurelia/contracts';
+import type { ApiSuccess, AuthSessionData } from '@veyora/contracts';
 import { createApp } from '../../app.js';
 import { prisma } from '../../infrastructure/database/prisma.js';
 
-const email = 'auth.integration@aurelia.test';
+const email = 'auth.integration@veyora.test';
 const password = 'StrongPassword123';
 const server = createServer(createApp());
 let baseUrl = '';

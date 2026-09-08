@@ -1,4 +1,4 @@
-import type { ReturnStatus } from '@aurelia/contracts';
+import type { ReturnStatus } from '@veyora/contracts';
 
 export const ReturnStatusBadge = ({ status }: { status: ReturnStatus }) => {
   const tone =
