@@ -1,0 +1,71 @@
+services:
+  - type: web
+    name: aurelia-api
+    runtime: docker
+    dockerfilePath: ./apps/api/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/ready
+    preDeployCommand: npm run db:migrate:deploy
+    maxShutdownDelaySeconds: 30
+    disk:
+      name: aurelia-uploads
+      mountPath: /app/apps/api/uploads
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DEPLOYMENT_ENVIRONMENT
+        value: render
+      - key: DATABASE_URL
+        sync: false
+      - key: WEB_URL
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: COOKIE_SECRET
+        sync: false
+      - key: METRICS_TOKEN
+        sync: false
+      - key: SAFEPAY_ENABLED
+        value: 'false'
+      - key: SMTP_ENABLED
+        value: 'false'
+
+  - type: worker
+    name: aurelia-worker
+    runtime: docker
+    dockerfilePath: ./apps/api/Dockerfile
+    dockerContext: .
+    dockerCommand: node apps/api/dist/worker.js
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DEPLOYMENT_ENVIRONMENT
+        value: render
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: COOKIE_SECRET
+        sync: false
+      - key: METRICS_TOKEN
+        sync: false
+      - key: SAFEPAY_ENABLED
+        value: 'false'
+      - key: SMTP_ENABLED
+        value: 'false'
+
+  - type: web
+    name: aurelia-web
+    runtime: docker
+    dockerfilePath: ./apps/web/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      - key: API_UPSTREAM
+        sync: false

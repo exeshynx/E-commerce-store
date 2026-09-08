@@ -1,0 +1,62 @@
+{
+  "name": "veyora-e-commerce",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Full-stack fashion e-commerce platform for Veyora.",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "admin:bootstrap": "npm run admin:bootstrap -w @aurelia/api",
+    "build": "npm run build -w @aurelia/contracts && npm run build -w @aurelia/api && npm run build -w @aurelia/web",
+    "db:down": "docker compose down",
+    "db:migrate": "npm run prisma:migrate:dev -w @aurelia/api --",
+    "db:migrate:deploy": "npm run prisma:migrate:deploy -w @aurelia/api",
+    "db:seed": "npm run db:seed -w @aurelia/api",
+    "db:status": "npm run db:status -w @aurelia/api",
+    "db:studio": "npm run db:studio -w @aurelia/api",
+    "db:up": "docker compose up -d mysql",
+    "dev": "concurrently -k -n WEB,API,WORKER -c cyan,magenta,yellow \"npm run dev -w @aurelia/web\" \"npm run dev -w @aurelia/api\" \"npm run dev:worker -w @aurelia/api\"",
+    "dev:api": "npm run dev -w @aurelia/api",
+    "dev:worker": "npm run dev:worker -w @aurelia/api",
+    "dev:web": "npm run dev -w @aurelia/web",
+    "env:check": "node scripts/check-env.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings=0",
+    "prisma:format": "npm run prisma:format -w @aurelia/api",
+    "prisma:generate": "npm run prisma:generate -w @aurelia/api",
+    "start": "npm run start -w @aurelia/api",
+    "start:worker": "npm run start:worker -w @aurelia/api",
+    "test": "npm run test -w @aurelia/api",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:install": "playwright install chromium",
+    "test:e2e:report": "playwright show-report",
+    "security:audit": "npm audit --omit=dev --audit-level=high",
+    "typecheck": "npm run build -w @aurelia/contracts && npm run typecheck -w @aurelia/api && npm run typecheck -w @aurelia/web && tsc --noEmit -p tsconfig.json",
+    "validate": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2",
+    "concurrently": "^10.0.4",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.8.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build -w @aurelia/contracts && npm run build -w @aurelia/web",
+  "framework": "vite",
+  "installCommand": "npm install",
+  "outputDirectory": "apps/web/dist",
+  "rewrites": [
+    {
+      "destination": "/index.html",
+      "source": "/((?!assets/|favicon.ico).*)"
+    }
+  ]
+}

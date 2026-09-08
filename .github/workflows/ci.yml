@@ -1,0 +1,100 @@
+name: Continuous integration
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+concurrency:
+  cancel-in-progress: true
+  group: ci-${{ github.ref }}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate, build, and E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      BCRYPT_ROUNDS: 10
+      COOKIE_SECRET: ci-cookie-secret-at-least-32-characters-long
+      DATABASE_URL: mysql://root:root@127.0.0.1:3306/aurelia
+      DEPLOYMENT_ENVIRONMENT: continuous-integration
+      JWT_ACCESS_SECRET: ci-access-secret-at-least-32-characters-long
+      JWT_REFRESH_SECRET: ci-refresh-secret-at-least-32-characters-long
+      NODE_ENV: test
+      RELEASE_SHA: ${{ github.sha }}
+      SAFEPAY_ENABLED: 'false'
+      SMTP_ENABLED: 'false'
+      WEB_URL: http://127.0.0.1:5173
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: aurelia
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version: 24
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npm run prisma:generate
+
+      - name: Deploy and verify migrations
+        run: |
+          npm run db:migrate:deploy
+          npm run db:status
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Run API integration tests
+        run: npm test
+
+      - name: Build production bundles
+        run: npm run build
+
+      - name: Audit production dependencies for critical vulnerabilities
+        run: npm audit --omit=dev --audit-level=critical
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run deterministic browser tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          if-no-files-found: ignore
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14

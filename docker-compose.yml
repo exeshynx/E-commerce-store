@@ -1,0 +1,94 @@
+name: aurelia-jewels
+
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-aurelia}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-aurelia_dev_password}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-local_root_password}
+      MYSQL_USER: ${MYSQL_USER:-aurelia}
+    ports:
+      - '${MYSQL_BIND_ADDRESS:-127.0.0.1}:3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -h localhost -u root -p"$$MYSQL_ROOT_PASSWORD"']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  api:
+    profiles: ['production']
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      API_HOST: 0.0.0.0
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DEPLOYMENT_ENVIRONMENT: docker-compose
+      NODE_ENV: production
+      WEB_URL: ${PUBLIC_WEB_URL:-http://localhost:8080}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - '${API_BIND_ADDRESS:-127.0.0.1}:4000:4000'
+    volumes:
+      - product_uploads:/app/apps/api/uploads
+
+  migrate:
+    profiles: ['production']
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    command: ['npm', 'run', 'db:migrate:deploy']
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DEPLOYMENT_ENVIRONMENT: docker-compose
+      NODE_ENV: production
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: 'no'
+
+  worker:
+    profiles: ['production']
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    command: ['node', 'apps/api/dist/worker.js']
+    restart: unless-stopped
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-mysql://aurelia:aurelia_dev_password@mysql:3306/aurelia}
+      DEPLOYMENT_ENVIRONMENT: docker-compose
+      NODE_ENV: production
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    volumes:
+      - product_uploads:/app/apps/api/uploads
+
+  web:
+    profiles: ['production']
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    environment:
+      API_UPSTREAM: http://api:4000
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - '${WEB_BIND_ADDRESS:-127.0.0.1}:8080:8080'
+
+volumes:
+  mysql_data:
+  product_uploads:

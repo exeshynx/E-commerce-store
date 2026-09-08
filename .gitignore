@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build and test output
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Runtime and local configuration
+.env
+.env.*
+!.env.example
+!deploy/.env.production.example
+*.log
+logs/
+*.zip
+
+# Editors and operating systems
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
+
+# Generated uploads and Prisma artifacts
+apps/api/uploads/*
+!apps/api/uploads/.gitkeep
+!apps/api/uploads/products/
+apps/api/uploads/products/*
+!apps/api/uploads/products/.gitkeep
+!apps/api/uploads/products/development-placeholder.svg
+apps/api/src/generated/prisma/
+
+# Local infrastructure
+data/
